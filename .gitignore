@@ -1,0 +1,37 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+
+# Ignore the output of `go tool cover`
+*.cover
+
+# Ignore build/ directory
+build/
+
+# Ignore .idea directory for JetBrains IDEs
+.idea/
+
+# Ignore vendor/ directory which contains dependencies
+vendor/
+
+# Ignore any binary created by the Go compiler
+/bin/
+
+# Ignore any object files created by the Go compiler
+/pkg/
+
+# Ignore any temporary files
+/tmp/

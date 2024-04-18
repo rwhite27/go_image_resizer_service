@@ -1,40 +1,13 @@
 package services
 
 import (
-	"io"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/disintegration/imaging"
 )
 
-type File struct {
-	Filename  string
-	Size      int64
-	Extension string
-}
-
-func SaveOriginalFile(w http.ResponseWriter, r *http.Request) (string, error) {
-	file, fileHeader, err := r.FormFile("file")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-	defer file.Close()
-
-	outFile, err := os.Create(fileHeader.Filename)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-	defer outFile.Close()
-	_, err = io.Copy(outFile, file)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-
-	return fileHeader.Filename, nil
-}
-
+// Resize an image given the width and length
 func ResizeImage(w http.ResponseWriter, filename string, width int, length int) {
 
 	src, err := imaging.Open(filename)
